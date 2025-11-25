@@ -1,0 +1,85 @@
+package com.fred.swyppy.ui.screens.start
+
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
+import com.fred.swyppy.R
+import com.fred.swyppy.navigation.ROUT_HOME
+import com.fred.swyppy.ui.theme.newpurple
+
+@Composable
+fun StartScreen(navController: NavController){
+    Column(
+        modifier = Modifier
+            .fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    )
+    {
+
+
+
+        Image(
+            painter = painterResource(id = R.drawable.swyppyii),
+            contentDescription = "logo",
+            modifier = Modifier.size(300.dp)
+        )
+
+        Text(
+            text = "Real Estate World in all Dimensions",
+            fontSize = 20.sp,
+            fontWeight = FontWeight.ExtraBold,
+            color = newpurple,
+            fontStyle = FontStyle.Italic,
+            fontFamily = FontFamily.SansSerif
+
+        )
+        Text(
+            text = "",
+            textAlign = TextAlign.Center
+        )
+        Button(
+            onClick = { navController.navigate(ROUT_HOME)},
+            modifier = Modifier.height(50.dp).fillMaxWidth().padding(20.dp,0.dp,20.dp),
+            shape = RoundedCornerShape(10.dp),
+            colors = ButtonDefaults.buttonColors(newpurple)
+
+
+        ) {
+            Text(text = "Next")
+        }
+
+
+    }
+
+}
+
+@Preview(showBackground = true)
+@Composable
+fun StartScreenPreview(){
+    StartScreen(rememberNavController())
+
+
+}
