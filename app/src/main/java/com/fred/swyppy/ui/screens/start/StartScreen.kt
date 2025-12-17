@@ -13,8 +13,10 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
@@ -25,8 +27,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.airbnb.lottie.compose.LottieAnimation
+import com.airbnb.lottie.compose.LottieCompositionSpec
+import com.airbnb.lottie.compose.animateLottieCompositionAsState
+import com.airbnb.lottie.compose.rememberLottieComposition
 import com.fred.swyppy.R
-import com.fred.swyppy.navigation.ROUT_HOME
+import com.fred.swyppy.navigation.ROUT_REGISTER
 import com.fred.swyppy.ui.theme.newpurple
 
 @Composable
@@ -40,15 +46,25 @@ fun StartScreen(navController: NavController){
     {
 
 
+        //Lottie Animation
+        val composition by rememberLottieComposition(spec = LottieCompositionSpec.RawRes(R.raw.swipeleft))
+        val progress by animateLottieCompositionAsState(composition)
 
-        Image(
-            painter = painterResource(id = R.drawable.swyppyii),
-            contentDescription = "logo",
+        LottieAnimation(composition, progress,
             modifier = Modifier.size(300.dp)
         )
+        //End
+
+
+
+        //Image(
+          //  painter = painterResource(id = R.drawable.swyppyii),
+            //contentDescription = "logo",
+            //modifier = Modifier.size(300.dp)
+        //)
 
         Text(
-            text = "Real Estate World in all Dimensions",
+            text = "Real Estate World in two Dimensions",
             fontSize = 20.sp,
             fontWeight = FontWeight.ExtraBold,
             color = newpurple,
@@ -61,14 +77,15 @@ fun StartScreen(navController: NavController){
             textAlign = TextAlign.Center
         )
         Button(
-            onClick = { navController.navigate(ROUT_HOME)},
+            onClick = { navController.navigate(ROUT_REGISTER)},
             modifier = Modifier.height(50.dp).fillMaxWidth().padding(20.dp,0.dp,20.dp),
             shape = RoundedCornerShape(10.dp),
             colors = ButtonDefaults.buttonColors(newpurple)
 
 
         ) {
-            Text(text = "Next")
+            Text(text = "Next",
+            color = Color.White)
         }
 
 
